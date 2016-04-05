@@ -1,0 +1,25 @@
+atlas1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+caveman
+  rotate: true
+  xy: 1284, 246
+  size: 83, 156
+  orig: 83, 156
+  offset: 0, 0
+  index: -1
+trex
+  rotate: false
+  xy: 1284, 2
+  size: 179, 242
+  orig: 179, 243
+  offset: 0, 1
+  index: -1
