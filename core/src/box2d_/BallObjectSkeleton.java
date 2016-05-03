@@ -52,10 +52,10 @@ public class BallObjectSkeleton extends ImageObjct{
 		debugRenderer.setRegionAttachments(false);
 
 		
-		atlas = new TextureAtlas(Gdx.files.internal("box2d/skeleton.atlas"));
+		atlas = new TextureAtlas(Gdx.files.internal("box2d/skeleton1.atlas"));
 		SkeletonJson json = new SkeletonJson(atlas); // This loads skeleton JSON data, which is stateless.
 		json.setScale(Test1_Box2d.WORLD_TO_SCREEN * .4f); // Load the skeleton at 60% the size it was in Spine.
-		SkeletonData skeletonData = json.readSkeletonData(Gdx.files.internal("box2d/skeleton.json"));
+		SkeletonData skeletonData = json.readSkeletonData(Gdx.files.internal("box2d/skeleton1.json"));
 
 		skeleton = new Skeleton(skeletonData); // Skeleton holds skeleton state (bone positions, slot attachments, etc).
 		//skeleton.setPosition(250, 20);

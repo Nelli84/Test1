@@ -31,11 +31,12 @@
 
 package com.esotericsoftware.spine;
 
+import com.esotericsoftware.spine.attachments.Attachment;
+import com.esotericsoftware.spine.attachments.BoundingBoxAttachment;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.FloatArray;
 import com.badlogic.gdx.utils.Pool;
-import com.esotericsoftware.spine.attachments.Attachment;
-import com.esotericsoftware.spine.attachments.BoundingBoxAttachment;
 
 public class SkeletonBounds {
 	private float minX, minY, maxX, maxY;
@@ -156,8 +157,9 @@ public class SkeletonBounds {
 		return inside;
 	}
 
-	/** Returns the first bounding box attachment that contains the line segment, or null. When doing many checks, it is usually
-	 * more efficient to only call this method if {@link #aabbIntersectsSegment(float, float, float, float)} returns true. */
+	/** Returns the first bounding box attachment that contains any part of the line segment, or null. When doing many checks, it
+	 * is usually more efficient to only call this method if {@link #aabbIntersectsSegment(float, float, float, float)} returns
+	 * true. */
 	public BoundingBoxAttachment intersectsSegment (float x1, float y1, float x2, float y2) {
 		Array<FloatArray> polygons = this.polygons;
 		for (int i = 0, n = polygons.size; i < n; i++)
@@ -165,7 +167,7 @@ public class SkeletonBounds {
 		return null;
 	}
 
-	/** Returns true if the polygon contains the line segment. */
+	/** Returns true if the polygon contains any part of the line segment. */
 	public boolean intersectsSegment (FloatArray polygon, float x1, float y1, float x2, float y2) {
 		float[] vertices = polygon.items;
 		int nn = polygon.size;

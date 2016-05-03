@@ -41,7 +41,7 @@ import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.Slot;
 
 /** Attachment that displays a texture region. */
-public class MeshAttachment extends Attachment {
+public class MeshAttachment extends Attachment implements FfdAttachment {
 	private TextureRegion region;
 	private String path;
 	private float[] vertices, regionUVs;
@@ -49,9 +49,11 @@ public class MeshAttachment extends Attachment {
 	private float[] worldVertices;
 	private final Color color = new Color(1, 1, 1, 1);
 	private int hullLength;
+	private MeshAttachment parentMesh;
+	private boolean inheritFFD;
 
 	// Nonessential.
-	private int[] edges;
+	private short[] edges;
 	private float width, height;
 
 	public MeshAttachment (String name) {
@@ -128,6 +130,10 @@ public class MeshAttachment extends Attachment {
 		return worldVertices;
 	}
 
+	public boolean applyFFD (Attachment sourceAttachment) {
+		return this == sourceAttachment || (inheritFFD && parentMesh == sourceAttachment);
+	}
+
 	public float[] getWorldVertices () {
 		return worldVertices;
 	}
@@ -176,11 +182,11 @@ public class MeshAttachment extends Attachment {
 		this.hullLength = hullLength;
 	}
 
-	public int[] getEdges () {
+	public short[] getEdges () {
 		return edges;
 	}
 
-	public void setEdges (int[] edges) {
+	public void setEdges (short[] edges) {
 		this.edges = edges;
 	}
 
@@ -198,5 +204,32 @@ public class MeshAttachment extends Attachment {
 
 	public void setHeight (float height) {
 		this.height = height;
+	}
+
+	/** Returns the source mesh if this is a linked mesh, else returns null. */
+	public MeshAttachment getParentMesh () {
+		return parentMesh;
+	}
+
+	/** @param parentMesh May be null. */
+	public void setParentMesh (MeshAttachment parentMesh) {
+		this.parentMesh = parentMesh;
+		if (parentMesh != null) {
+			vertices = parentMesh.vertices;
+			regionUVs = parentMesh.regionUVs;
+			triangles = parentMesh.triangles;
+			hullLength = parentMesh.hullLength;
+			edges = parentMesh.edges;
+			width = parentMesh.width;
+			height = parentMesh.height;
+		}
+	}
+
+	public boolean getInheritFFD () {
+		return inheritFFD;
+	}
+
+	public void setInheritFFD (boolean inheritFFD) {
+		this.inheritFFD = inheritFFD;
 	}
 }

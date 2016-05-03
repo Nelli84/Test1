@@ -31,9 +31,10 @@
 
 package com.esotericsoftware.spine.attachments;
 
+import com.esotericsoftware.spine.Skin;
+
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.esotericsoftware.spine.Skin;
 
 public class AtlasAttachmentLoader implements AttachmentLoader {
 	private TextureAtlas atlas;
@@ -60,11 +61,11 @@ public class AtlasAttachmentLoader implements AttachmentLoader {
 		return attachment;
 	}
 
-	public SkinnedMeshAttachment newSkinnedMeshAttachment (Skin skin, String name, String path) {
+	public WeightedMeshAttachment newWeightedMeshAttachment (Skin skin, String name, String path) {
 		AtlasRegion region = atlas.findRegion(path);
 		if (region == null)
-			throw new RuntimeException("Region not found in atlas: " + path + " (skinned mesh attachment: " + name + ")");
-		SkinnedMeshAttachment attachment = new SkinnedMeshAttachment(name);
+			throw new RuntimeException("Region not found in atlas: " + path + " (weighted mesh attachment: " + name + ")");
+		WeightedMeshAttachment attachment = new WeightedMeshAttachment(name);
 		attachment.setRegion(region);
 		return attachment;
 	}

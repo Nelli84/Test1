@@ -4,8 +4,13 @@ package com.esotericsoftware.spine.utils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
-import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationState.TrackEntry;
+import com.esotericsoftware.spine.AnimationStateData;
+import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.SkeletonData;
+import com.esotericsoftware.spine.SkeletonRenderer;
+import com.esotericsoftware.spine.Skin;
 
 public class SkeletonActorPool extends Pool<SkeletonActor> {
 	private SkeletonRenderer renderer;
@@ -20,7 +25,7 @@ public class SkeletonActorPool extends Pool<SkeletonActor> {
 	}
 
 	public SkeletonActorPool (SkeletonRenderer renderer, SkeletonData skeletonData, AnimationStateData stateData,
-							  int initialCapacity, int max) {
+		int initialCapacity, int max) {
 		super(initialCapacity, max);
 
 		this.renderer = renderer;
@@ -74,8 +79,8 @@ public class SkeletonActorPool extends Pool<SkeletonActor> {
 		return actor;
 	}
 
-	/** This pool keeps a reference to the obtained instance, so it should be returned to the pool via {@link #free(SkeletonActor)}
-	 * , {@link #freeAll(Array)}, or {@link #freeComplete()} to avoid leaking memory. */
+	/** This pool keeps a reference to the obtained instance, so it should be returned to the pool via
+	 * , {@link #freeAll(Array)} or {@link #freeComplete()} to avoid leaking memory. */
 	public SkeletonActor obtain () {
 		SkeletonActor actor = super.obtain();
 		actor.setSkeleton(skeletonPool.obtain());
