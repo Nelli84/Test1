@@ -5,12 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.IntArray;
-import com.badlogic.gdx.utils.IntMap;
 
 public class Test1_MusicSample extends ScreenAdapter implements InputProcessor{
 	private static final float VOLUME_CHANGE = 0.2f;
@@ -150,6 +147,12 @@ public class Test1_MusicSample extends ScreenAdapter implements InputProcessor{
 			playSong((currentSongIdx + 1) % songs.size);
 			Gdx.app.log("MusicSample", "Song finished, play next song");
 		}
+	}
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0.5f,.5f,.5f,1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 }
 

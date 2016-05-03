@@ -1,11 +1,5 @@
 package box2d_;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import aurelienribon.bodyeditor.BodyEditorLoader;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
@@ -40,6 +34,12 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import aurelienribon.bodyeditor.BodyEditorLoader;
 
 public class Test1_Box2d_Water2 implements Screen{
 	
