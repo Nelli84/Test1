@@ -10,8 +10,8 @@ public class Test1_Game extends Game{
 	@Override
 	public void create() {
 		Gdx.app.setLogLevel(Gdx.app.LOG_DEBUG);
-//		setScreen(new Test1_SpatialAudioSample());
-		setScreen(new Test1_Box2d_Water4());
+		setScreen(new Test1_PreferencesSample());
+//		setScreen(new Test1_Box2d_Water4());
 //		setScreen(new Test1_FrameBuffer());
 	}
 
