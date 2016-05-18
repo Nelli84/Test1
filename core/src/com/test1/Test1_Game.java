@@ -12,11 +12,8 @@ public class Test1_Game extends Game{
 	@Override
 	public void create() {
 		Gdx.app.setLogLevel(Gdx.app.LOG_DEBUG);
-		try {
-			setScreen(new Test1_XmlParsingSample());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		setScreen(new Test1_JsonParsingSample());
+
 //		setScreen(new Test1_Box2d_Water4());
 //		setScreen(new Test1_FrameBuffer());
 	}
